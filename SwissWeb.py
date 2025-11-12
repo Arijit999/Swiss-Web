@@ -130,6 +130,7 @@ def main():
         case "3":
             short_url()
         case "Q":
+           clear_screen()
            quit()
 
 def clear_screen():
@@ -146,4 +147,5 @@ if __name__ == "__main__":
     install()
     while(True):
         main()
+
         
