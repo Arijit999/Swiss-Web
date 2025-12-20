@@ -1,4 +1,5 @@
-
+![Alt text](Image1.png)
+![Alt text](Image2.png)
 Download Linux distros straight from your terminal 
 
 Install Dependencies
