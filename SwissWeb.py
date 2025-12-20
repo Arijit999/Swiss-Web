@@ -14,7 +14,6 @@ def ISO_Downloader(Url,Name,extension="iso"):
     try:
         data = requests.get(Url,stream=True)
         Total_Bytes=int(data.headers["Content-Length"]) # Get the total file size
-        #print("Total_Bytes :",Total_Bytes)
         progress_bar=tqdm(total=Total_Bytes,unit='iB',unit_scale=True,leave=False,desc=f"Downloading {Name}")
         with open(f"{Name}.{extension}", "ab") as iso:
             for bytes in data.iter_content(chunk_size=10*1024*1024):
@@ -23,14 +22,13 @@ def ISO_Downloader(Url,Name,extension="iso"):
         console.print("\nDownload completed!\n",style="Green")
     except:
         console.print("\nError occurred\n🌐 Check internet connection.",style="red")
+        input("Press a key to exit")
 
 def Linux_ISOs():
-    '''
-    Docstring for Linux_ISOs
-    '''
+
     clear_screen()
     ISO_Name={1:"Kali Linux",2:"Ubuntu",3:"Fedora",4:"Debian",5:"Manjaro",6:"Opensuse",7:"Centos",8:"Popos",9:"Linux Mint",10:"Parrotos",0:"Quit"}
-    ISO_Url={"Kali Linux":"https://cdimage.kali.org/kali-2025.2/kali-linux-2025.2-installer-amd64.iso",
+    ISO_Url={"Kali Linux":"https://cdimage.kali.org/kali-2025.4/kali-linux-2025.4-installer-amd64.iso",
              "Ubuntu":"https://releases.ubuntu.com/24.04.3/ubuntu-24.04.3-desktop-amd64.iso",
              "Fedora":"https://download.fedoraproject.org/pub/fedora/linux/releases/42/Workstation/x86_64/iso/Fedora-Workstation-Live-42-1.1.x86_64.iso",
              "Debian":"https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.1.0-amd64-netinst.iso",
@@ -49,14 +47,13 @@ def Linux_ISOs():
             else:
                 console.print(f"[green][{n+1}]{iso}[/]")
         
-        ch = input("Download ISO: ").upper()
-        #if ch not in ['1','2','3','4','5','6','7','8','9','10','0']:
+        ch = input("Download ISO: ")
         if ch not in [str(i) for i in range(11)]:
             console.print("Invalid input.",style="Red")
             continue
         else:
             break
-    if ch == '0': # Exit 
+    if ch == '0': # Exit  
         pass
     else: 
         if os.path.exists("Linux iso"):
@@ -68,9 +65,6 @@ def Linux_ISOs():
     os.chdir("..") # Return to original directory 
 
 def QR_Generator():
-    """
-    Generate QR codes
-    """
     clear_screen()
     while(True):
         console.print("[red]Q[/] to quit")
@@ -100,7 +94,6 @@ def short_url() -> str:
     clear_screen()
     s = pyshorteners.Shortener()
     while(True):
-       
         try:
             console.print("\n[red]Q[/] to quit")
             URL = input("Enter Url : ")
@@ -114,6 +107,10 @@ def short_url() -> str:
 
 
 def main():
+    figlet=Figlet(font="slant")
+    Ascii=figlet.renderText('SwissWeb')
+    console.print(f"[bold magenta]{Ascii}")
+
     console.print("\n[1]Linux ISOs \n[2]QR Generator \n[3]Url Shortner \n[red]'Q'[/] to quit",style="cyan")
     while(True):
         ch=console.input("[green]Enter option: ").upper()
@@ -140,12 +137,10 @@ def clear_screen():
         os.system('cls')
 
 if __name__ == "__main__":
-    clear_screen()
-    figlet=Figlet(font="slant")
-    Ascii=figlet.renderText('SwissWeb')
-    console.print(f"[bold magenta]{Ascii}")
+    # clear_screen()
     install()
     while(True):
+        clear_screen()
         main()
 
         
