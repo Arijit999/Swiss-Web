@@ -1,5 +1,5 @@
-<img src="image1.png" width="200" height="100">
-<img src="image2.png" width="200" height="100">
+![Alt text](Image1.png)
+![Alt text](Image2.png)
 Download Linux distros straight from your terminal 
 
 Install Dependencies
