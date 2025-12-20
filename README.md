@@ -1,3 +1,5 @@
+<img src="image1.png" width="200" height="100">
+<img src="image2.png" width="200" height="100">
 Download Linux distros straight from your terminal 
 
 Install Dependencies
